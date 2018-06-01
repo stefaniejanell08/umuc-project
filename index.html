@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.1/mapquest.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.1/mapquest.css" />
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+    <style>
+        #map {
+            width: 600px;
+            height: 600px;
+        }
+        
+        .vertical-gap {
+            height: 100px;
+            width: 100%;
+        }
+    </style>
+
+
+</head>
+
+<body>
+    <div class="container">
+        <div class="row justify-content-center" style="margin-bottom: 50px;margin-top:50px">
+
+            <input type="text" class="form-control" id="location" aria-describedby="location" placeholder="Enter address" style="margin-right:10px;margin-bottom: 10px;">
+            <button type="submit" class="btn btn-warning" onclick="current()" style="margin-right:10px;">Use Current Location</button>
+            <button type="submit" class="btn btn-primary" onclick="output()">Search</button>
+        </div>
+
+        <div class="row ">
+            <div id="map" class="col-sm">
+
+            </div>
+            <div class="col-sm" id="result">
+                <div class="alert alert-primary" role="alert">
+                    Results
+                </div>
+
+            </div>
+        </div>
+
+
+    </div>
+    <script src="key.js"></script>
+
+    <script>
+        var q = {};
+
+
+        location.href.split('?')[1].split('&').forEach(function(i) {
+            q[i.split('=')[0]] = i.split('=')[1];
+        });
+        var currentLat = q.currentLat;
+        var currentLong = q.currentLong;
+
+
+
+        function output() {
+            var input = $('#location').val();
+            if (input == '') {
+                alert('Please enter a location');
+            } else {
+                $.ajax({
+                    type: 'GET',
+                    url: "http://www.mapquestapi.com/geocoding/v1/address?key=" + KEY + "&location=" + input,
+                    async: false,
+                    dataType: 'json',
+                    success: function(data) {
+                        currentLat = data.results[0].locations[0].displayLatLng.lat;
+                        currentLong = data.results[0].locations[0].displayLatLng.lng;
+                        window.location = "index.html?currentLat=" + currentLat + "&currentLong=" + currentLong;
+                    }
+                });
+
+
+            }
+        }
+        L.mapquest.key = KEY;
+
+        var map = L.mapquest.map('map', {
+            center: [currentLat, currentLong],
+            layers: L.mapquest.tileLayer('map'),
+            zoom: 15
+        });
+        getRestaurants();
+
+        function getRestaurants() {
+            $.ajax({
+                type: 'GET',
+                url: "https://www.mapquestapi.com/search/v4/place?location=" + currentLong + "%2C%20-" + currentLat + "&sort=distance&feedback=false&key=" + KEY + "&circle=%20" + currentLong + "%2C" + currentLat + "%2C1000&pageSize=25&page=1&q=restaurant",
+                async: false,
+                dataType: 'json',
+                success: function(jd) {
+                    console.log(jd.results);
+                    for (var i = 0; i < jd.results.length; i++) {
+                        $("#result").append('<div class="list-group"><a href="#" class="list-group-item list-group-item-action flex-column align-items-start"><div class="d-flex w-100 justify-content-between"><h5 class="mb-1">' + jd.results[i].name + '</h5></div><p class="mb-1">' + jd.results[i].displayString + '</p><small>' + '</small></a></div>');
+                        var receivedLong = jd.results[i].place.geometry.coordinates[0];
+                        var receivedLat = jd.results[i].place.geometry.coordinates[1];
+                        L.mapquest.textMarker([receivedLat, receivedLong], {
+                            text: jd.results[i].name,
+                            subtext: receivedLat + "," + receivedLong,
+                            position: 'right',
+                            type: 'marker',
+                            icon: {
+                                primaryColor: '#333333',
+                                secondaryColor: '#333333',
+                                size: 'sm'
+                            }
+                        }).addTo(map);
+                    }
+
+                }
+            });
+        }
+
+
+
+
+        function current() {
+            if ("geolocation" in navigator) {
+                navigator.geolocation.getCurrentPosition(function(position) {
+                    currentLat = position.coords.latitude;
+                    currentLong = position.coords.longitude;
+                    refocus(currentLat, currentLong);
+                });
+            } else {
+                console.log("Browser doesn't support geolocation!");
+            }
+        }
+
+
+
+        L.mapquest.textMarker([currentLat, currentLong], {
+            text: 'Current Location',
+            subtext: currentLat + "," + currentLong,
+            position: 'right',
+            type: 'marker',
+            icon: {
+                primaryColor: '#333333',
+                secondaryColor: '#333333',
+                size: 'sm'
+            }
+        }).addTo(map);
+
+        function refocus() {
+            window.location = "index.html?currentLat=" + currentLat + "&currentLong=" + currentLong;
+        }
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+</body>
+
+</html>
