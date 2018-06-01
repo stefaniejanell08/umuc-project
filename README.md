@@ -20,6 +20,7 @@ Note: easiest to grab path to file by just dragging the folder directly to the c
 (5)	The node server will start (Take a note of the command line to see what port the server is running. It will be something like http://127.0.0.1:8080. This is the url of the app. However the app will still not work because you need to provide your own api key.
 
 (6)	Go to developer.mapquest.com, open a free account 
+
   a.	Then “create a new key”, give it any name and keep the key safe.
   
 (7)	Open key.js and type: const KEY = “your key”, just fill it with your key
