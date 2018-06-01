@@ -1,7 +1,7 @@
 # umuc-project
 project for UMUC495
 
-#instruction to setup the project
+#instruction to setup the project#
 (1)	We will need a http server. The easiest to get is Node http server.
   a.	First we will install node package manager, npm
   b.	Go to https://nodejs.org/en/download/current/ and download Node JS. The NPM package manager will be automatically installed with it.
