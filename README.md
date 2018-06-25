@@ -14,8 +14,9 @@ npm install http-server -g
 (3)	Download the repo from git hub by either cloning or performing: git clone https://github.com/iEmrul/umuc-project.git
 
 (4)	The repo will be downloaded as a folder. Open command prompt and enter:
-http-server (path to file name)
+http-server (path to file directory)
 Note: easiest to grab path to file by just dragging the folder directly to the command prompt and dropping it
+it will be something like :  http-server c:/pathtofile/umuc-project/
 
 (5)	The node server will start (Take a note of the command line to see what port the server is running. It will be something like http://127.0.0.1:8080. This is the url of the app. However the app will still not work because you need to provide your own api key.
 
@@ -23,7 +24,7 @@ Note: easiest to grab path to file by just dragging the folder directly to the c
 
   a.	Then “create a new key”, give it any name and keep the key safe.
   
-(7)	Open key.js and type: const KEY = “your key”, just fill it with your key
+(7)	Open key.js (inside the folder you just downloaded) and type: const KEY = “your key”, just fill in  your key
 
 (8)	Now the app should run without any error
 
