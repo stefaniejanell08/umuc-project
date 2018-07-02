@@ -7,7 +7,8 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://api.mqcdn.com/sdk/mapquest-js/v1.3.1/mapquest.js"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4"
+        crossorigin="anonymous">
     <link type="text/css" rel="stylesheet" href="https://api.mqcdn.com/sdk/mapquest-js/v1.3.1/mapquest.css" />
     <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
@@ -16,77 +17,77 @@
             width: 600px;
             height: 600px;
         }
-        
+
         .vertical-gap {
             height: 100px;
             width: 100%;
         }
 
-.slidecontainer {
-    width: 200px;
-    display:inline-block;
-}
+        .slidecontainer {
+            width: 200px;
+            display: inline-block;
+        }
 
-.slider {
-    -webkit-appearance: none;
-    width: 100%;
-    height: 25px;
-    background: #d3d3d3;
-    outline: none;
-    opacity: 0.7;
-    -webkit-transition: .2s;
-    transition: opacity .2s;
-}
+        .slider {
+            -webkit-appearance: none;
+            width: 100%;
+            height: 25px;
+            background: #d3d3d3;
+            outline: none;
+            opacity: 0.7;
+            -webkit-transition: .2s;
+            transition: opacity .2s;
+        }
 
-.slider:hover {
-    opacity: 1;
-}
+        .slider:hover {
+            opacity: 1;
+        }
 
-.slider::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
-}
+        .slider::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
 
-.slider::-moz-range-thumb {
-    width: 25px;
-    height: 25px;
-    background: #4CAF50;
-    cursor: pointer;
-}
+        .slider::-moz-range-thumb {
+            width: 25px;
+            height: 25px;
+            background: #4CAF50;
+            cursor: pointer;
+        }
 
-.slideHolder{
-    margin: 0 auto;
-}
-.list-container{
-    background-color:white;
-}
+        .slideHolder {
+            margin: 0 auto;
+        }
 
-body { 
-  background: url(background.jpg) no-repeat center center fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-}
+        .list-container {
+            background-color: white;
+        }
 
-.res-list{
-    background-color:white;
-    margin-bottom: 5px;
-    padding: 20px;
-    border-radius: 5px;
+        body {
+            background: url(background.jpg) no-repeat center center fixed;
+            -webkit-background-size: cover;
+            -moz-background-size: cover;
+            -o-background-size: cover;
+            background-size: cover;
+        }
 
-}
+        .res-list {
+            background-color: white;
+            margin-bottom: 5px;
+            padding: 20px;
+            border-radius: 5px;
 
-.direction{
-    padding:20px;
-    height: 100%;
-}
+        }
 
-</style>
+        .direction {
+            padding: 20px;
+            height: 100%;
+        }
+    </style>
 
 
 </head>
@@ -96,51 +97,51 @@ body {
         <div class="row justify-content-center" style="margin-bottom: 5px;margin-top:5px">
             <div class="jumbotron jumbotron-fluid">
                 <div class="container">
-                  <h1 class="display-4">Restaurant App</h1>
-                  <p class="lead">Find locals favorite restaurant</p>
+                    <h1 class="display-4">Restaurant App</h1>
+                    <p class="lead">Find locals favorite restaurant</p>
                 </div>
-              </div>
+            </div>
         </div>
 
 
 
         <div class="row" style="margin-bottom: 20px;">
             <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                    <input type="text" class="form-control" id="location" aria-describedby="location" placeholder="Enter address" style="margin-right:10px;margin-bottom: 10px;">
-                    <button type="submit" class="btn btn-warning" onclick="current()" style="margin-right:10px;">Use Current Location</button>
-                    <button type="submit" class="btn btn-primary" onclick="output()">Search</button>
+                <div class="card">
+                    <div class="card-body">
+                        <input type="text" class="form-control" id="location" aria-describedby="location" placeholder="Enter address" style="margin-right:10px;margin-bottom: 10px;">
+                        <button type="submit" class="btn btn-warning" onclick="current()" style="margin-right:10px;">Use Current Location</button>
+                        <button type="submit" class="btn btn-primary" onclick="output()">Search</button>
+                    </div>
                 </div>
-              </div>
             </div>
             <div class="col-sm-6">
-              <div class="card">
-                <div class="card-body">
-                  <h5 class="card-title">Display Options</h5>
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Display Options</h5>
 
-                  <div class="slideHolder">
-                    <div class="slidecontainer">
-                        <p>Select Radius:</p>
-                        <input type="range" min="1" max="50" value="20" name="slideradius" id="slide">
-                         <span id="slide-radius">50</span> Km
-                    </div>        
+                        <div class="slideHolder">
+                            <div class="slidecontainer">
+                                <p>Select Radius:</p>
+                                <input type="range" min="1" max="50" value="20" name="slideradius" id="slide">
+                                <span id="slide-radius">50</span> Km
+                            </div>
 
-                    <div class="slidecontainer">
-                        <p>Select Number:</p>
-                        <input type="range" min="1" max="50" value="20" name="slidenumber" id="slide">
-                         <span id="slide-number">50</span> restaurants
-                    </div> 
-                </div>              
+                            <div class="slidecontainer">
+                                <p>Select Number:</p>
+                                <input type="range" min="1" max="50" value="20" name="slidenumber" id="slide">
+                                <span id="slide-number">50</span> restaurants
+                            </div>
+                        </div>
 
-</li>
-                  
-                  <!-- <a href="#" class="btn btn-primary">Driving Direction</a>
+                        </li>
+
+                        <!-- <a href="#" class="btn btn-primary">Driving Direction</a>
                   <a href="#" class="btn btn-primary">Walking Direction</a> -->
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>        
+        </div>
 
         <div class="row ">
             <div id="map" class="col-sm">
@@ -148,7 +149,7 @@ body {
             </div>
             <div class="col-sm" id="result">
                 <div class="alert alert-primary" role="alert">
-                    Results 
+                    Results
                     <span id="number-restaurant-display"> 50 Restaurants</span>
                     <span id="radius-restaurant-display"> 50 KM</span>
                 </div>
@@ -159,19 +160,19 @@ body {
 
     <!-- Large modal -->
     <div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-                    <p class="direction">
-                
-                    </p>
-            
-                        <p class="driving-direction" style="width:95%; margin:0 auto;padding-bottom:10px;">
-                                
-                        </p>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <p class="direction">
+
+                </p>
+
+                <p class="driving-direction" style="width:95%; margin:0 auto;padding-bottom:10px;">
+
+                </p>
 
 
+            </div>
         </div>
-    </div>
     </div>
 
 
@@ -184,7 +185,7 @@ body {
         var q = {};
 
 
-        location.href.split('?')[1].split('&').forEach(function(i) {
+        location.href.split('?')[1].split('&').forEach(function (i) {
             q[i.split('=')[0]] = i.split('=')[1];
         });
         var currentLat = q.currentLat;
@@ -204,15 +205,15 @@ body {
                     url: "http://www.mapquestapi.com/geocoding/v1/address?key=" + KEY + "&location=" + input,
                     async: false,
                     dataType: 'json',
-                    success: function(data) {
+                    success: function (data) {
                         currentLat = data.results[0].locations[0].displayLatLng.lat;
                         currentLong = data.results[0].locations[0].displayLatLng.lng;
                         var numberOfRestaurants = $("#slide-number").text();
                         var radiusOfRestaurants = $("#slide-radius").text();
                         radiusOfRestaurants = parseInt(radiusOfRestaurants);
                         radiusOfRestaurants = radiusOfRestaurants * 1000;
-                        window.location = "index.html?currentLat=" + currentLat + "&currentLong=" + currentLong + 
-                        "&numberOfRestaurants="+numberOfRestaurants + "&radiusOfRestaurants="+radiusOfRestaurants;
+                        window.location = "index.html?currentLat=" + currentLat + "&currentLong=" + currentLong +
+                            "&numberOfRestaurants=" + numberOfRestaurants + "&radiusOfRestaurants=" + radiusOfRestaurants;
                     }
                 });
 
@@ -238,14 +239,14 @@ body {
         function getRestaurants() {
             $.ajax({
                 type: 'GET',
-                url: "https://www.mapquestapi.com/search/v4/place?location=" + currentLong + "%2C%20-" + currentLat + "&sort=distance&feedback=false&key=" + KEY + "&circle=%20" + currentLong + "%2C" + currentLat + "%2C"+radiusRestaurants+"&pageSize="+ numRestaurants+"&page=1&q=restaurant",
+                url: "https://www.mapquestapi.com/search/v4/place?location=" + currentLong + "%2C%20-" + currentLat + "&sort=distance&feedback=false&key=" + KEY + "&circle=%20" + currentLong + "%2C" + currentLat + "%2C" + radiusRestaurants + "&pageSize=" + numRestaurants + "&page=1&q=restaurant",
                 async: false,
                 dataType: 'json',
-                success: function(jd) {
+                success: function (jd) {
                     for (var i = 0; i < jd.results.length; i++) {
                         var receivedLong = jd.results[i].place.geometry.coordinates[0];
                         var receivedLat = jd.results[i].place.geometry.coordinates[1];
-                        $("#result").append('<div class="res-list"><h3>' + jd.results[i].name + '</h3><p>' + jd.results[i].displayString + '</p> <button id="direction-button" onclick="setTarget('+ receivedLat+','+receivedLong+')" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"> Directions </button></div></div>');
+                        $("#result").append('<div class="res-list"><h3>' + jd.results[i].name + '</h3><p>' + jd.results[i].displayString + '</p> <button id="direction-button" onclick="setTarget(' + receivedLat + ',' + receivedLong + ')" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"> Directions </button></div></div>');
 
                         L.mapquest.textMarker([receivedLat, receivedLong], {
                             text: jd.results[i].name,
@@ -266,12 +267,12 @@ body {
 
 
         $("#number-restaurant-display").text(numRestaurants + " Restaurants | ");
-        $("#radius-restaurant-display").text(radiusRestaurants/1000 + "Km");
+        $("#radius-restaurant-display").text(radiusRestaurants / 1000 + "Km");
 
 
         function current() {
             if ("geolocation" in navigator) {
-                navigator.geolocation.getCurrentPosition(function(position) {
+                navigator.geolocation.getCurrentPosition(function (position) {
                     currentLat = position.coords.latitude;
                     currentLong = position.coords.longitude;
                     refocus(currentLat, currentLong);
@@ -282,24 +283,24 @@ body {
         }
 
 
-        function setTarget(dir1, dir2){
+        function setTarget(dir1, dir2) {
             targetResLat = dir1;
             targetResLong = dir2;
-    
+
             $.ajax({
                 type: 'GET',
-                url: "http://www.mapquestapi.com/directions/v2/route?key=xuAUSccJDyZTrVwSGSO0BJRLics6GTQL&from=" +currentLat+ ","+ currentLong+"&to=" + targetResLat+ "," + targetResLong+"&routeType=pedestrian",
+                url: "http://www.mapquestapi.com/directions/v2/route?key=xuAUSccJDyZTrVwSGSO0BJRLics6GTQL&from=" + currentLat + "," + currentLong + "&to=" + targetResLat + "," + targetResLong + "&routeType=pedestrian",
                 async: false,
                 dataType: 'json',
-                success: function(jd) {
+                success: function (jd) {
                     console.log(jd.route.legs[0].maneuvers);
                     $(".direction").html('<h1>Walking Direction </h1>');
                     $(".direction").append('<table class="table table-bordered"><tr><th width="10%">Sign</th><th width="70%">Direction</th><th width="10%">Distance</th><th width="10%">Duration</th></tr>');
                     for (var i = 0; i < jd.route.legs[0].maneuvers.length; i++) {
-                        $(".direction").append('<tr><td width="10%"><img src="' + jd.route.legs[0].maneuvers[i].iconUrl + '"/></td>'+
-                        '<td width="70%">'+ jd.route.legs[0].maneuvers[i].narrative+'</td>'
-                        + '<td width="10%">' +jd.route.legs[0].maneuvers[i].distance+ '</td>' + '<td width="10%">'+ jd.route.legs[0].maneuvers[i].formattedTime+ '</td></tr>'
-                    );
+                        $(".direction").append('<tr><td width="10%"><img src="' + jd.route.legs[0].maneuvers[i].iconUrl + '"/></td>' +
+                            '<td width="70%">' + jd.route.legs[0].maneuvers[i].narrative + '</td>'
+                            + '<td width="10%">' + jd.route.legs[0].maneuvers[i].distance + '</td>' + '<td width="10%">' + jd.route.legs[0].maneuvers[i].formattedTime + '</td></tr>'
+                        );
                     }
                     $(".direction").append('</table>');
 
@@ -308,23 +309,23 @@ body {
 
             $.ajax({
                 type: 'GET',
-                url: "http://www.mapquestapi.com/directions/v2/route?key=xuAUSccJDyZTrVwSGSO0BJRLics6GTQL&from=" +currentLat+ ","+ currentLong+"&to=" + targetResLat+ "," + targetResLong,
+                url: "http://www.mapquestapi.com/directions/v2/route?key=xuAUSccJDyZTrVwSGSO0BJRLics6GTQL&from=" + currentLat + "," + currentLong + "&to=" + targetResLat + "," + targetResLong,
                 async: false,
                 dataType: 'json',
-                success: function(jd) {
+                success: function (jd) {
                     console.log(jd.route.legs[0].maneuvers);
                     $(".driving-direction").html('<h1>Driving Direction </h1>');
                     $(".driving-direction").append('<table class="table table-bordered"><tr><th width="10%">Sign</th><th width="70%">Direction</th><th width="10%">Distance</th><th width="10%">Duration</th></tr>');
                     for (var i = 0; i < jd.route.legs[0].maneuvers.length; i++) {
-                        $(".driving-direction").append('<tr><td width="10%"><img src="' + jd.route.legs[0].maneuvers[i].iconUrl + '"/></td>'+
-                        '<td width="70%">'+ jd.route.legs[0].maneuvers[i].narrative+'</td>'
-                        + '<td width="10%">' +jd.route.legs[0].maneuvers[i].distance+ '</td>' + '<td width="10%">'+ jd.route.legs[0].maneuvers[i].formattedTime+ '</td></tr>'
-                    );
+                        $(".driving-direction").append('<tr><td width="10%"><img src="' + jd.route.legs[0].maneuvers[i].iconUrl + '"/></td>' +
+                            '<td width="70%">' + jd.route.legs[0].maneuvers[i].narrative + '</td>'
+                            + '<td width="10%">' + jd.route.legs[0].maneuvers[i].distance + '</td>' + '<td width="10%">' + jd.route.legs[0].maneuvers[i].formattedTime + '</td></tr>'
+                        );
                     }
                     $(".driving-direction").append('</table>');
 
                 }
-            });            
+            });
 
         }
 
@@ -342,24 +343,36 @@ body {
             }
         }).addTo(map);
 
+        L.circle([currentLat, currentLong], { radius: radiusRestaurants }).addTo(map);
+
         function refocus() {
             var numberOfRestaurants = $("#slide-number").text();
             var radiusOfRestaurants = $("#slide-radius").text();
             radiusOfRestaurants = parseInt(radiusOfRestaurants);
             radiusOfRestaurants = radiusOfRestaurants * 1000;
-            window.location = "index.html?currentLat=" + currentLat + "&currentLong=" + currentLong + 
-            "&numberOfRestaurants="+numberOfRestaurants + "&radiusOfRestaurants="+radiusOfRestaurants;
+            window.location = "index.html?currentLat=" + currentLat + "&currentLong=" + currentLong +
+                "&numberOfRestaurants=" + numberOfRestaurants + "&radiusOfRestaurants=" + radiusOfRestaurants;
         }
 
-        $(document).ready(function(){
-        $("[type=range]").change(function(){
-            var newv=$(this).val();
-            $(this).next().text(newv);
-        });
+        $(document).ready(function () {
+            $("[type=range]").change(function () {
+                var newv = $(this).val();
+                $(this).next().text(newv);
+            });
+            var q = {};
+            location.href.split('?')[1].split('&').forEach(function (i) {
+                q[i.split('=')[0]] = i.split('=')[1];
+            });
+            var numRestaurants = q.numberOfRestaurants;
+            var radiusRestaurants = q.radiusOfRestaurants
+            console.log(numRestaurants);
         });    
     </script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm"
+        crossorigin="anonymous"></script>
 </body>
 <!-- http://www.mapquestapi.com/directions/v2/route?key=xuAUSccJDyZTrVwSGSO0BJRLics6GTQL&from=39.182567,-77.236231&to=39.188614,-77.269713&routeType=pedestrian -->
+
 </html>
