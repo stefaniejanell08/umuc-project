@@ -95,10 +95,10 @@
 <body>
     <div class="container" style="background-color:rgba(65, 40, 4, 0.5)">
         <div class="row justify-content-center" style="margin-bottom: 5px;margin-top:5px">
-            <div class="jumbotron jumbotron-fluid">
+            <div class="jumbotron jumbotron-fluid" style="background-color:transparent">
                 <div class="container">
-                    <h1 class="display-4">Restaurant App</h1>
-                    <p class="lead">Find locals favorite restaurant</p>
+                    <h1 class="display-4" style="color:burlywood">Restaurant App</h1>
+                    <center> <p class="lead" style="color:burlywood">Find locals favorite restaurant</p></center>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@
                 <div class="card">
                     <div class="card-body">
                         <input type="text" class="form-control" id="location" aria-describedby="location" placeholder="Enter address" style="margin-right:10px;margin-bottom: 10px;">
-                        <button type="submit" class="btn btn-warning" onclick="current()" style="margin-right:10px;">Use Current Location</button>
+                        <button type="submit" class="btn btn-warning" onclick="current()" style="margin-right:10px;"> <b>Use Current Location</b></button>
                         <button type="submit" class="btn btn-primary" onclick="output()">Search</button>
                     </div>
                 </div>
@@ -123,14 +123,14 @@
                         <div class="slideHolder">
                             <div class="slidecontainer">
                                 <p>Select Radius:</p>
-                                <input type="range" min="1" max="50" value="20" name="slideradius" id="slide-r">
-                                <span id="slide-radius">5</span> Km
+                                <input type="range" min="1" max="50" value="20" name="slideradius" id="slide">
+                                <span id="slide-radius">50</span><b> Km</b>
                             </div>
 
                             <div class="slidecontainer">
-                                <p>Select Number:</p>
-                                <input type="range" min="1" max="50" value="20" name="slidenumber" id="slide-n">
-                                <span id="slide-number">50</span> restaurants
+                               <center><p>Select Number of restaurants:</p></center>
+                        <input type="range" min="1" max="50" value="20" name="slidenumber" id="slide">
+                                <span id="slide-number">50</span> <b>Items</b>
                             </div>
                         </div>
 
@@ -243,14 +243,10 @@
                 async: false,
                 dataType: 'json',
                 success: function (jd) {
-                    console.log(jd.results);
                     for (var i = 0; i < jd.results.length; i++) {
                         var receivedLong = jd.results[i].place.geometry.coordinates[0];
                         var receivedLat = jd.results[i].place.geometry.coordinates[1];
-                        var distanceFromLocation = Number(measure(currentLat, currentLong, receivedLat, receivedLong) / 1000).toFixed(2);
-
-                        $("#result").append('<div class="res-list"><h3>' + jd.results[i].name + '</h3><p>' + jd.results[i].displayString + '</p> <button id="direction-button" onclick="setTarget(' + receivedLat + ',' + receivedLong + ')" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"> Directions </button><p style="float:right">' + distanceFromLocation + ' km </p></div></div>');
-
+                        $("#result").append('<div class="res-list"><h3>' + jd.results[i].name + '</h3><p>' + jd.results[i].displayString + '</p> <button id="direction-button" onclick="setTarget(' + receivedLat + ',' + receivedLong + ')" type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-lg"> Directions </button></div></div>');
 
                         L.mapquest.textMarker([receivedLat, receivedLong], {
                             text: jd.results[i].name,
@@ -352,34 +348,14 @@
         function refocus() {
             var numberOfRestaurants = $("#slide-number").text();
             var radiusOfRestaurants = $("#slide-radius").text();
-            radiusOfRestaurants = parseFloat(radiusOfRestaurants);
+            radiusOfRestaurants = parseInt(radiusOfRestaurants);
             radiusOfRestaurants = radiusOfRestaurants * 1000;
             window.location = "index.html?currentLat=" + currentLat + "&currentLong=" + currentLong +
                 "&numberOfRestaurants=" + numberOfRestaurants + "&radiusOfRestaurants=" + radiusOfRestaurants;
         }
 
-        function measure(lat1, lon1, lat2, lon2) {  // generally used geo measurement function
-            var R = 6378.137; // Radius of earth in KM
-            var dLat = lat2 * Math.PI / 180 - lat1 * Math.PI / 180;
-            var dLon = lon2 * Math.PI / 180 - lon1 * Math.PI / 180;
-            var a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-                Math.cos(lat1 * Math.PI / 180) * Math.cos(lat2 * Math.PI / 180) *
-                Math.sin(dLon / 2) * Math.sin(dLon / 2);
-            var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
-            var d = R * c;
-            return d * 1000; // meters
-        }
-
         $(document).ready(function () {
-            // $("[type=range]").change(function () {
-            //     var newv = $(this).val() / 10;
-            //     $(this).next().text(newv);
-            // });
-            $("#slide-r").change(function () {
-                var newv = $(this).val() / 10;
-                $(this).next().text(newv);
-            });
-            $("#slide-n").change(function () {
+            $("[type=range]").change(function () {
                 var newv = $(this).val();
                 $(this).next().text(newv);
             });
@@ -389,6 +365,7 @@
             });
             var numRestaurants = q.numberOfRestaurants;
             var radiusRestaurants = q.radiusOfRestaurants
+            console.log(numRestaurants);
         });    
     </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ"
