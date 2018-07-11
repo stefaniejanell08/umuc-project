@@ -95,10 +95,10 @@
 <body>
     <div class="container" style="background-color:rgba(65, 40, 4, 0.5)">
         <div class="row justify-content-center" style="margin-bottom: 5px;margin-top:5px">
-            <div class="jumbotron jumbotron-fluid">
+            <div class="jumbotron jumbotron-fluid" style="background-color:transparent">
                 <div class="container">
-                    <h1 class="display-4">Restaurant App</h1>
-                    <p class="lead">Find locals favorite restaurant</p>
+                    <h1 class="display-4" style="color:burlywood">Restaurant App</h1>
+                    <center> <p class="lead" style="color:burlywood">Find locals favorite restaurant</p></center>
                 </div>
             </div>
         </div>
@@ -110,7 +110,7 @@
                 <div class="card">
                     <div class="card-body">
                         <input type="text" class="form-control" id="location" aria-describedby="location" placeholder="Enter address" style="margin-right:10px;margin-bottom: 10px;">
-                        <button type="submit" class="btn btn-warning" onclick="current()" style="margin-right:10px;">Use Current Location</button>
+                        <button type="submit" class="btn btn-warning" onclick="current()" style="margin-right:10px;"> <b>Use Current Location<b></button>
                         <button type="submit" class="btn btn-primary" onclick="output()">Search</button>
                     </div>
                 </div>
@@ -124,13 +124,13 @@
                             <div class="slidecontainer">
                                 <p>Select Radius:</p>
                                 <input type="range" min="1" max="50" value="20" name="slideradius" id="slide">
-                                <span id="slide-radius">50</span> Km
+                                <span id="slide-radius">50</span><b> Km</b>
                             </div>
 
                             <div class="slidecontainer">
-                                <p>Select Number:</p>
-                                <input type="range" min="1" max="50" value="20" name="slidenumber" id="slide">
-                                <span id="slide-number">50</span> restaurants
+                               <center><p>Select Number of restaurants:</p></center>
+                        <input type="range" min="1" max="50" value="20" name="slidenumber" id="slide">
+                                <span id="slide-number">50</span> <b>Items</b>
                             </div>
                         </div>
 
